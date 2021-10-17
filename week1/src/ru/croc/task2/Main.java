@@ -8,7 +8,7 @@ class Main {
 		int degree = 0;
 		while (value >= 1024) {
 			degree += 3;
-			value = value / Math.pow(10, 3);
+			value = value / Math.pow(10.24, 3);
 		}
 
 		String unit = "";
