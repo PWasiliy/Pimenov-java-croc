@@ -21,7 +21,7 @@ class Main {
 		}
 
 		double s = (((points[1].x - points[0].x) * (points[2].y - points[0].y)) 
-			- ((points[2].x - points[0].x) * (points[1].y - points[0].y))) / 2;
+			- ((points[2].x - points[0].x) * (points[1].y - points[0].y))) / 2.0;
 		System.out.printf("Площадь треугольника = %.2f", s);
 	}
 }
