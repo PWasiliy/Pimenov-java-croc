@@ -1,91 +1,9 @@
 package ru.croc.task2;
 
+import ru.croc.task1.Figures.*;
+import ru.croc.task1.Annotation;
+
 class Main {
-	public interface Movable {
-  		void move(int dx, int dy);
-	}
-
-	static abstract class Figure {
-		abstract boolean isPointIn(int x, int y);
-	}
-
-	static class Annotation {
-		private Figure figure;
-		private String caption;
-
-		Annotation(Figure figure, String caption) {
-			this.figure = figure;
-			this.caption = caption;
-		}
-
-		@Override
-		public String toString() {
-			return String.format("%s: %s", this.figure.toString(), caption);
-		}
-
-		public String getCaption() {
-			return this.caption;
-		}
-
-		public Figure getFigure() {
-			return this.figure;
-		}
-	}
-
-	static class Circle extends Figure implements Movable {
-		private int x, y, r;
-
-		Circle(int x, int y, int r) {
-			this.x = x;
-			this.y = y;
-			this.r = r;
-		}
-
-		@Override
-		public String toString() {
-			return String.format("C (%d, %d) %d", this.x, this.y, this.r);
-		}
-
-		@Override
-		boolean isPointIn(int x, int y) {
-			double dist = Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
-			return dist <= this.r;
-		}
-
-		public void move(int dx, int dy) {
-			this.x += dx;
-			this.y += dy;
-		}
-	}
-
-	static class Rectangle extends Figure implements Movable {
-		private int x1, y1, x2, y2;
-
-		Rectangle(int x1, int y1, int x2, int y2) {
-			this.x1 = x1;
-			this.y1 = y1;
-			this.x2 = x2;
-			this.y2 = y2;
-		}
-
-		@Override
-		public String toString() {
-			return String.format("R (%d, %d), (%d, %d)", this.x1, this.y1, this.x2, this.y2);
-		}
-
-		@Override
-		boolean isPointIn(int x, int y) {
-			return (x >= this.x1) && (x <= this.x2) && (y >= this.y1) && (y <= this.y2);
-		}
-
-		public void move(int dx, int dy) {
-			this.x1 += dx;
-			this.y1 += dy;
-			this.x2 += dx;
-			this.y2 += dy;
-		}
-	}
-
 	static class AnnotatedImage {
   		private final Annotation[] annotations;
 
