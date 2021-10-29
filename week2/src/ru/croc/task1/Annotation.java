@@ -15,4 +15,12 @@ public class Annotation {
     public String toString() {
         return String.format("%s: %s", this.figure.toString(), caption);
     }
+
+    public String getCaption() {
+        return this.caption;
+    }
+
+    public Figure getFigure() {
+        return this.figure;
+    }
 }
