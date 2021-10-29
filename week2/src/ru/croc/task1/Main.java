@@ -3,21 +3,6 @@ package ru.croc.task1;
 import ru.croc.task1.Figures.*;
 
 class Main {
-	static class Annotation {
-		private Figure figure;
-		private String caption;
-
-		Annotation(Figure figure, String caption) {
-			this.figure = figure;
-			this.caption = caption;
-		}
-
-		@Override
-		public String toString() {
-			return String.format("%s: %s", this.figure.toString(), caption);
-		}
-	}
-
 	public static void main(String[] args) {
 		System.out.println("Test example running...");
 
