@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     static class Log {
-        int time;
+        long time;
         String msg;
         Log(String log) {
             String[] strings = log.split(" ");
