@@ -13,7 +13,7 @@ public class Main {
         String msg;
         Log(String log) {
             String[] strings = log.split(" ");
-            this.time = Integer.parseInt(strings[0]);
+            this.time = Long.parseLong(strings[0]);
             this.msg = strings[1];
         }
     }
