@@ -13,15 +13,8 @@ public class Main {
             this.since = since;
             this.till = till;
         }
-        public boolean isBetween(Call call) {
-            return ((this.since <= call.till) && (this.till >= call.since));
-        }
-        public int betweenCount(Call[] calls) {
-            int count = 0;
-            for (Call call : calls) {
-                count = this.isBetween(call) ? ++count : count;
-            }
-            return count;
+        public boolean isBetween(int moment) {
+            return (this.since <= moment) && (moment <= this.till);
         }
     }
 
@@ -34,18 +27,28 @@ public class Main {
             System.out.printf("Не удалось открыть файл, ошибка: %s\n", e.getMessage());
         }
 
+        int since = Integer.MAX_VALUE;
+        int till = Integer.MIN_VALUE;
         List<Call> calls = new ArrayList<Call>();
         while (scanner.hasNextLine()) {
             String[] arr = scanner.nextLine().split(",");
-            calls.add(new Call(Integer.parseInt(arr[0]), Integer.parseInt(arr[1])));
+            Call call = new Call(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
+            calls.add(call);
+
+            since = Math.min(since, call.since);
+            till = Math.max(till, call.till);
         }
 
         int max = 0;
-        for (Call call : calls) {
-            int count = call.betweenCount(calls.toArray(new Call[0])) - 1;
+        for (int i = since; i <= till; i++) {
+            int count = 0;
+            for (Call call : calls)
+                if (call.isBetween(i))
+                    count++;
+
             max = Math.max(max, count);
         }
 
-        System.out.printf("Пиковое количество звонков: %d", max);
+        System.out.printf("Пиковое количество звонков: %d\n", max);
     }
 }
