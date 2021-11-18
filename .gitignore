@@ -3,3 +3,5 @@
 *.html
 *.iml
 *.log
+*.txt
+.gitignore
