@@ -20,14 +20,14 @@ public class Main {
             } else return false;
         }
 
-        public synchronized String getBuyer() {
-            return this.buyer;
+        public String getWinner() {
+            return new Date().after(this.finish) ? this.buyer : null;
         }
     }
 
     public static void main(String[] args) {
 	    Lot lot = new Lot(new Date(System.currentTimeMillis() + 1_000_000));
         lot.update(100, "Croc");
-        System.out.println(lot.getBuyer());
+        System.out.println(lot.getWinner());
     }
 }
