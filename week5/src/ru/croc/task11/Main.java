@@ -12,12 +12,16 @@ public class Main {
             this.finish = finish;
         }
 
-        public synchronized boolean update(int price, String buyer) {
+        public synchronized boolean updateSync(int price, String buyer) {
             if ((price > this.price) && (new Date().before(this.finish))) {
                 this.price = price;
                 this.buyer = buyer;
                 return true;
             } else return false;
+        }
+
+        public boolean update(int price, String buyer) {
+            return (price > this.price && new Date().before(this.finish)) ? this.updateSync(price, buyer) : false;
         }
 
         public String getWinner() {
