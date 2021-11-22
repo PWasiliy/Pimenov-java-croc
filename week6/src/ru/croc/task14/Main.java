@@ -10,6 +10,7 @@ public class Main {
     private static final String FILMS_PATH = System.getProperty("user.dir") + "\\src\\ru\\croc\\task14\\Films.txt";
 
     public static void main(String[] args) {
+        // количество просмотров фильма считается по ВСЕМ пользователям
         Scanner usersScanner = null;
         Scanner filmsScanner = null;
         try {
