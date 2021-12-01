@@ -97,7 +97,7 @@ public class ShopDAO {
                 statement.executeUpdate();
             }
 
-            Order order = new Order(id);
+            Order order = new Order(id, userLogin);
             order.getProducts().addAll(products);
             return order;
 
